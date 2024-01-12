@@ -1,0 +1,80 @@
+.upload-main-wrapper {
+    width: 100%;
+    margin: 0 0;
+    .upload-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        margin: 0px auto 0;
+        position: relative;
+        cursor: pointer;
+        padding: 15px;
+        border-radius: 5px;
+        overflow: hidden;
+        transition: 0.2s linear all;
+        color: var(--theme-color);
+        background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='%23ccc' stroke-width='3' stroke-dasharray='6%2c 14' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
+        &:hover, &:focus {
+            background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='%232e44ff' stroke-width='3' stroke-dasharray='6%2c 14' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
+        }
+        input[type=file] {
+            width: 100%;
+            position: absolute;
+            left: 0;
+            right: 0;
+            opacity: 0;
+            top: 0;
+            bottom: 0;
+            cursor: pointer;
+            z-index: 1;
+        }
+        > svg {
+            width: 30px;
+            height: auto;
+            cursor: pointer;
+        }
+        .file-upload-text {
+            position: absolute;
+            left: 80px;
+            opacity: 1;
+            visibility: visible;
+            transition: 0.2s linear all;
+        }
+        &.uploaded {
+            transition: 0.2s linear all;
+            width: 60px;
+            border-radius: 50%;
+            height: 60px;
+            text-align: center;
+            .file-upload-text {
+                text-indent: -999px;
+                margin: 0;
+            }
+        }
+    }
+}
+.import-result-alert {
+    font-size: 14px;
+    p {
+        margin-bottom: 2px;
+    }
+    span {
+        font-weight: bold;
+        font-size: 18px;
+    }
+    .add {
+        span {
+            color:green;
+        }
+    }
+    .upload {
+        span {
+            color:blue;
+        }
+    }
+    .error {
+        span {
+            color:red;
+        }
+    }
+}
