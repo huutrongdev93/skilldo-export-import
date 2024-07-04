@@ -5,7 +5,7 @@
  * Plugin uri  : https://sikido.vn
  * Description : Xuất nhập sản phẩm bằng File excel
  * Author  : SKDSoftware Dev Team
- * Version : 1.1.1
+ * Version : 2.0.0
  */
 
 const EXIM_NAME = 'ExportImport';
@@ -28,6 +28,14 @@ class ExportImport {
             mkdir($filesPath.'/imports/products/errors', 0755);
             mkdir($filesPath.'/imports/products/errors/import', 0755);
             mkdir($filesPath.'/imports/products/errors/upload', 0755);
+
+            mkdir($filesPath, 0755);
+            mkdir($filesPath.'/imports/inventory', 0755);
+            mkdir($filesPath.'/imports/inventory/excel', 0755);
+            mkdir($filesPath.'/imports/inventory/upload', 0755);
+            mkdir($filesPath.'/imports/inventory/errors', 0755);
+            mkdir($filesPath.'/imports/inventory/errors/import', 0755);
+            mkdir($filesPath.'/imports/inventory/errors/upload', 0755);
         }
     }
 
@@ -41,7 +49,16 @@ class ExportImport {
     }
 }
 
+include 'admin/ajax.php';
+include 'admin/file-demo.php';
 include 'admin/products/export.php';
 include 'admin/products/import.php';
 include 'admin/products/ajax.php';
+
+include 'admin/inventory/export.php';
+include 'admin/inventory/import.php';
+include 'admin/inventory/ajax.php';
+
+include 'admin/order/export.php';
+
 add_action('admin_init', 'ExportImport::assets');
