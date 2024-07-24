@@ -1,13 +1,4 @@
 <?php
-/**
- * Plugin name : Export Import
- * Plugin class: ExportImport
- * Plugin uri  : https://sikido.vn
- * Description : Xuất nhập sản phẩm bằng File excel
- * Author  : SKDSoftware Dev Team
- * Version : 2.0.0
- */
-
 const EXIM_NAME = 'ExportImport';
 
 class ExportImport {
