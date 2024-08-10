@@ -69,8 +69,8 @@ Class AdminImportInventory {
             $segment = Url::segment();
             if(!empty($segment[2])
                 && $segment[2] == 'plugins'
-                && Request::get('page') == 'import-products'
-                && Request::get('file-download') == 'products-import-add') {
+                && request()->input('page') == 'import-products'
+                && request()->input('file-download') == 'products-import-add') {
                 $excelFilePath  = Path::plugin(EXIM_NAME).'/assets/excel/products-demo-add.xlsx';
                 $downloadFileName = 'products-demo-add.xlsx';
                 header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
