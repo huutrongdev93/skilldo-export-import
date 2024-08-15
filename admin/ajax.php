@@ -866,11 +866,10 @@ class ExportAjax {
 
             foreach ($orders as $order) {
 
-                $billingAddress = $order->billing_address.', ';
-                if(!empty($order->billing_ward)) $billingAddress .= Cart_Location::ward($order->billing_districts, $order->billing_ward).', ';
-                if(!empty($order->billing_districts)) $billingAddress .= Cart_Location::districts($order->billing_city, $order->billing_districts).', ';
-                if(!empty($order->billing_city)) $billingAddress .= Cart_Location::cities($order->billing_city);
+                $billingAddress = $order->billing_address.', '. PrdCartHelper::billingAddress($order);
+
                 $billingAddress = trim($billingAddress,',');
+
                 $order->billing_address = $billingAddress;
 
                 foreach ($order->items as $key => $product) {
