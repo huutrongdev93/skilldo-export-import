@@ -120,7 +120,7 @@ class ExportAjax {
                 }
 
                 if($product->hasVariation != 0) {
-                    $productsVariation = Product::gets(Qr::set('parent_id', $product->id)->where('type', 'variations')->where('status', '<>', 'draft'));
+                    $productsVariation = Variation::where('parent_id', $product->id)->where('status', '<>', 'draft')->fetch();
                     foreach ($productsVariation as $item) {
                         $item->excerpt          = $product->excerpt;
                         $item->content          = $product->content;

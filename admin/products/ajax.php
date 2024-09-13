@@ -389,7 +389,7 @@ class ProductsImportAjax {
 
                             if(!empty($products)) {
 
-                                $productVariations = Product::where('parent_id', $productMaim->id)->where('type', 'variations')->fetch();
+                                $productVariations = Variation::where('parent_id', $productMaim->id)->fetch();
 
                                 if(have_posts($productVariations)) {
 
@@ -1269,7 +1269,7 @@ class ProductsImportAjax {
 
                         $attributesGroupId = array_unique($attributesGroupId);
 
-                        $productVariations = Product::where('parent_id', $productMaim->id)->where('type', 'variations')->fetch();
+                        $productVariations = Variation::where('parent_id', $productMaim->id)->fetch();
 
                         if(!have_posts($productVariations)) {
                             foreach ($products as $product) {
