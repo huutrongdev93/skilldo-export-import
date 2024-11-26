@@ -402,9 +402,10 @@ class ProductsImportAjax {
                                         $productVariationId[] = $productVariation->id;
                                     }
 
-                                    $model = model('products_attribute_item');
-
-                                    $relationships = $model::whereIn('variation_id', $productVariationId)->select('product_id', 'variation_id', 'attribute_id', 'item_id')->fetch();
+                                    $relationships = DB::table('products_attribute_item')
+                                        ->whereIn('variation_id', $productVariationId)
+                                        ->select('product_id', 'variation_id', 'attribute_id', 'item_id')
+                                        ->get();
 
                                     foreach ($productVariations as $productVariation) {
 
@@ -1284,7 +1285,10 @@ class ProductsImportAjax {
 
                         $model = model('products_attribute_item');
 
-                        $relationships = $model::where('product_id', $productMaim->id)->select('id', 'product_id', 'variation_id', 'attribute_id', 'item_id')->fetch();
+                        $relationships = DB::table('products_attribute_item')
+                            ->where('product_id', $productMaim->id)
+                            ->select('id', 'product_id', 'variation_id', 'attribute_id', 'item_id')
+                            ->get();
 
                         $relationshipsVariation = [];
 
@@ -1422,18 +1426,9 @@ class ProductsImportAjax {
 
                                     $productUp = apply_filters('import_product_update_variation_data_before_insert', $productUp, $product);
 
-                                    $variationId = $model->table('products')
+                                    $variationId = DB::table('products')
                                         ->where('id', $product->id)
                                         ->update($productUp);
-
-                                    if (is_skd_error($variationId)) {
-                                        $failed[] = [
-                                            'numberRow' => $product->numberRow,
-                                            'title'     => $product->title,
-                                            'message'   => $variationId->first(),
-                                        ];
-                                        continue;
-                                    }
 
                                     $success['upload']++;
 
