@@ -1,5 +1,7 @@
 <?php
 
+use Ecommerce\Enum\Order\Status;
+use Ecommerce\Enum\Order\StatusPay;
 use JetBrains\PhpStorm\NoReturn;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
@@ -1013,13 +1015,13 @@ class ExportAjax {
                 'status' => [
                     'label' => 'Tình trạng',
                     'value' => function($item) {
-                        return (!empty($item->status)) ? OrderHelper::status($item->status, 'label') : '';
+                        return (!empty($item->status)) ? Status::tryFrom($item->status)->label() : '';
                     },
                 ],
                 'status_pay' => [
                     'label' => 'Trạng thái',
                     'value' => function($item) {
-                        return (!empty($item->status_pay)) ? OrderHelper::statusPay($item->status_pay, 'label') : '';
+                        return (!empty($item->status_pay)) ? StatusPay::tryFrom($item->status_pay)->label() : '';
                     },
                 ],
                 'order_note'        => [
